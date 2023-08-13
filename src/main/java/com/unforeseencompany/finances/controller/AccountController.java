@@ -34,9 +34,7 @@ public class AccountController {
     @PostMapping
     public ResponseEntity<Account> createAccount(@Valid @RequestBody CreateAccountDTO createAccountDto) {
         try {
-            Account account = new Account(createAccountDto);
-
-            return ResponseEntity.ok(accountService.saveAccount(account));
+            return ResponseEntity.ok(accountService.saveAccount(new Account(createAccountDto)));
         } catch (IllegalArgumentException e) {
             log.error("Error creating account: " + e.getMessage());
             return ResponseEntity.badRequest().build();
@@ -71,8 +69,7 @@ public class AccountController {
     @GetMapping
     public ResponseEntity<List<Account>> getAllAccounts() {
         try {
-            List<Account> accounts = accountService.getAllAccounts();
-            return ResponseEntity.ok(accounts);
+            return ResponseEntity.ok(accountService.getAllAccounts());
         } catch (Exception e) {
             log.error("Error obtaining the list of accounts: " + e.getMessage());
             return ResponseEntity.internalServerError().build();
