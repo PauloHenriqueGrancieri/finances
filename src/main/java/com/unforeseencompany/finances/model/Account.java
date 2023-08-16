@@ -2,16 +2,13 @@ package com.unforeseencompany.finances.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.unforeseencompany.finances.dto.CreateAccountDTO;
+import com.unforeseencompany.finances.dto.AccountDTO;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "account")
@@ -38,9 +35,9 @@ public class Account {
     @Column(name = "created_at")
     private LocalDate createdAt;
 
-    public Account(CreateAccountDTO createAccountDTO) {
-        this.name = createAccountDTO.getName();
-        this.initialBalance = createAccountDTO.getInitialBalance();
+    public Account(AccountDTO accountDTO) {
+        this.name = accountDTO.getName();
+        this.initialBalance = accountDTO.getInitialBalance();
         this.balance = this.initialBalance;
         this.createdAt = LocalDate.now();
     }

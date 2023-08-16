@@ -11,9 +11,10 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CreateAccountDTO {
+public class AccountDTO {
 
     @NotBlank
+    @NotNull
     private String name;
 
     @NotNull
