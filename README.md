@@ -1,2 +1,2 @@
 # finances
-Complete personal finance app
+personal finance app
